@@ -1,0 +1,11 @@
+name: HomePlugin
+version: '1.0-SNAPSHOT'
+main: dev.blockeed.homePlugin.HomePlugin
+api-version: '1.21'
+authors: [ blockeed ]
+description: This is the recreation of the Bedwars plugin from LMC.
+commands:
+  home:
+    description: Teleport home
+  sethome:
+    description: Set new home
