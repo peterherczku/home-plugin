@@ -6,6 +6,14 @@ authors: [ blockeed ]
 description: This is the recreation of the Bedwars plugin from LMC.
 commands:
   home:
-    description: Teleport home
+    description: Teleport to your default home, or to the given home
+    usage: /home [name]
   sethome:
-    description: Set new home
+    description: Set your default home, or the given home (max 3 homes)
+    usage: /sethome [name]
+  setdefaulthome:
+    description: Choose which home /home teleports to
+    usage: /setdefaulthome <name>
+  delhome:
+    description: Delete one of your homes
+    usage: /delhome <name>

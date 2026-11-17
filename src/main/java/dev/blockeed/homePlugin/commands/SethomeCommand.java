@@ -12,8 +12,23 @@ public class SethomeCommand implements CommandExecutor {
         if (!(commandSender instanceof Player player)) {
             return true;
         }
-        HomeManager.setHome(player);
-        player.sendMessage("Successfully set your new home :)");
-        return false;
+        String name;
+        if (args.length == 0) {
+            // Without a name, overwrite the default home (like the old single-home /sethome)
+            name = HomeManager.getDefaultHomeName(player);
+            if (name == null) name = HomeManager.DEFAULT_HOME_NAME;
+        } else {
+            name = args[0].toLowerCase();
+            if (!HomeManager.isValidName(name)) {
+                player.sendMessage("Home names can only contain letters, numbers, _ and - (max 16 characters)");
+                return true;
+            }
+        }
+        if (!HomeManager.setHome(player, name)) {
+            player.sendMessage("You can only have " + HomeManager.MAX_HOMES + " homes. Overwrite one of yours: " + String.join(", ", HomeManager.getHomeNames(player)));
+            return true;
+        }
+        player.sendMessage("Successfully set your home " + name + " :)");
+        return true;
     }
 }
